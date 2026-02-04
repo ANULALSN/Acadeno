@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/layout/SmoothScroll";
 import CustomCursor from "@/components/ui/CustomCursor";
 import NeuralNetwork from "@/components/background/NeuralNetwork";
 import ThemeController from "@/components/layout/ThemeController";
+import Navbar from "@/components/layout/Navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,6 +29,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased bg-onyx text-foreground selection:bg-cyan/30 overflow-x-hidden`}
       >
         <ThemeController>
+          <Navbar />
           <CustomCursor />
           <NeuralNetwork />
           <SmoothScroll>{children}</SmoothScroll>

@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { useIntroStore } from "@/store/introStore";
 import { useTheme } from "@/components/layout/ThemeController";
 import { useMotionValueEvent } from "framer-motion";
+import Comet from "./Comet";
 
 function Network({ count = 150 }) {
     const mesh = useRef<THREE.Points>(null);
@@ -173,6 +174,7 @@ export default function NeuralNetwork() {
                 dpr={[1, 2]}
             >
                 <Network />
+                <Comet />
             </Canvas>
         </div>
     );
