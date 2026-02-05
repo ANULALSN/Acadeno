@@ -1,20 +1,20 @@
 "use client";
 import Script from 'next/script';
-import { useEffect } from 'react';
 
 export default function ChatbaseBot() {
     const chatbotId = process.env.NEXT_PUBLIC_CHATBASE_ID;
 
-    if (!chatbotId || chatbotId.includes('YOUR_CHATBASE_ID_HERE')) {
-        return null; // Don't verify or render anything if ID is missing
-    }
+    if (!chatbotId) return null;
 
     return (
         <Script
+            id="chatbase-loader"
             src="https://www.chatbase.co/embed.min.js"
-            id={chatbotId}
+            strategy="afterInteractive"
             defer
-            strategy="lazyOnload"
+            // @ts-ignore - Custom attributes for Chatbase
+            chatbotId={chatbotId}
+            domain="www.chatbase.co"
         />
     );
 }

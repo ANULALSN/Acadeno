@@ -1,25 +1,44 @@
 export const submitToGoogleSheets = async (data: any) => {
     const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL;
 
-    if (!scriptURL || scriptURL.includes('YOUR_SHEET_WEB_APP_URL_HERE')) {
-        console.warn("Google Sheets URL is not configured in .env.local");
+    if (!scriptURL) {
+        console.warn("SheetDB URL is not configured in .env.local");
         return { result: "error", error: "Configuration Missing" };
     }
 
-    try {
-        const formData = new FormData();
-        Object.keys(data).forEach(key => formData.append(key, data[key]));
+    // SheetDB is Case Sensitive! Use exact header names from the Sheet.
+    const payload = {
+        data: [
+            {
+                "Timestamp": new Date().toLocaleString(),
+                "Name": data.name,
+                "Phone": data.phone,
+                "Course": data.course,
+                "Message": data.message
+            }
+        ]
+    };
 
+    try {
         const response = await fetch(scriptURL, {
             method: 'POST',
-            body: formData,
-            mode: 'no-cors' // Important for Google Apps Script
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
         });
 
-        // With no-cors, we can't check response.ok, so we assume success if no error thrown
-        return { result: "success" };
+        const result = await response.json();
+
+        // SheetDB returns the created row(s) on success, or an error object
+        if (response.ok) {
+            return { result: "success", data: result };
+        } else {
+            return { result: "error", error: result.error || "Submission Failed" };
+        }
     } catch (error) {
-        console.error("Error submitting to Google Sheets:", error);
+        console.error("Error submitting to SheetDB:", error);
         return { result: "error", error };
     }
 };
