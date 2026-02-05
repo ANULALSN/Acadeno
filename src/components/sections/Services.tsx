@@ -52,7 +52,7 @@ export default function Services() {
                         transition={{ delay: 0.1 }}
                         className="text-gray-400 max-w-2xl mx-auto"
                     >
-                        Delivering excellence across the technology spectrum.
+                        Empowering businesses with innovation and students with skills.
                     </motion.p>
                 </div>
 

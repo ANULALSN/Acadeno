@@ -74,7 +74,7 @@ export default function AboutSection() {
                         <Globe className="text-violet w-6 h-6" />
                     </div>
                     <h3 className="text-2xl font-bold text-white">Our Story</h3>
-                    <p className="text-white/60 text-sm">Evolving from Maitexa to Acadeno: The next evolution in EdTech.</p>
+                    <p className="text-white/60 text-sm">Evolving to Acadeno: The next evolution in EdTech.</p>
                 </GlassCard>
             </motion.div>
         </motion.section>

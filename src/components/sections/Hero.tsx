@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe, Layers, Zap } from "lucide-react";
 import Link from "next/link";
 
@@ -32,15 +33,19 @@ export default function Hero() {
                     </motion.div>
 
                     {/* Main Title */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
-                    >
-                        <span className="block text-white">We Build The</span>
-                        <span className="text-gradient-cyan">Digital Future</span>
-                    </motion.h1>
+                    <div className="h-[180px] md:h-[240px] flex flex-col justify-center items-center mb-6">
+                        <motion.h1
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-center"
+                        >
+                            <span className="block text-white mb-2">Where AI Builds</span>
+                            <span className="block h-[1.2em] overflow-hidden">
+                                <TextRotator words={["Your Career", "Tech Experts", "Innovators", "Future Leaders"]} />
+                            </span>
+                        </motion.h1>
+                    </div>
 
                     {/* Subtitle */}
                     <motion.p
@@ -49,7 +54,7 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="text-lg md:text-xl text-gray-400 max-w-2xl mb-10 leading-relaxed"
                     >
-                        Maitexa operates as a dynamic startup specializing in Information Technology and Embedded Systems.
+                        Acadeno operates as a dynamic hub specializing in Information Technology and Embedded Systems.
                         We deliver premium Software Development, Corporate Training, and elite Internship Programs.
                     </motion.p>
 
@@ -115,5 +120,31 @@ function FeatureCard({ icon, title, desc, delay }: { icon: React.ReactNode, titl
             <h3 className="text-xl font-bold mb-2 text-white group-hover:text-cyan-300 transition-colors">{title}</h3>
             <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
         </motion.div>
+    );
+}
+
+function TextRotator({ words }: { words: string[] }) {
+    const [index, setIndex] = React.useState(0);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prev) => (prev + 1) % words.length);
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [words.length]);
+
+    return (
+        <AnimatePresence mode="wait">
+            <motion.span
+                key={index}
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -50, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "backOut" }}
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500"
+            >
+                {words[index]}
+            </motion.span>
+        </AnimatePresence>
     );
 }

@@ -18,19 +18,18 @@ export default function About() {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-sm font-medium mb-6">
-                            <Rocket className="w-4 h-4" /> About Maitexa
+                            <Rocket className="w-4 h-4" /> About Acadeno
                         </div>
 
                         <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                            Driving Innovation in <br />
-                            <span className="text-gradient-gold">Tech & Education</span>
+                            Premier IT Solutions & <br />
+                            <span className="text-gradient-gold">Future-Ready Education</span>
                         </h2>
 
                         <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-                            Maitexa is not just a company; it's a dynamic ecosystem where technology meets talent.
-                            As a fast-growing startup, we specialize in high-impact information technology solutions
-                            and embedded systems engineering, while simultaneously nurturing the next generation of
-                            tech leaders through our intensive training and internship programs.
+                            Acadeno is a leading technology partner for businesses and a launchpad for future talent.
+                            We specialize in delivering high-impact Information Technology solutions and embedded systems engineering for clients worldwide.
+                            Simultaneously, we nurture the next generation of tech leaders through our industry-focused training and internship programs.
                         </p>
 
                         <div className="space-y-4">

@@ -6,6 +6,8 @@ import CustomCursor from "@/components/ui/CustomCursor";
 import NeuralNetwork from "@/components/background/NeuralNetwork";
 import ThemeController from "@/components/layout/ThemeController";
 import Navbar from "@/components/layout/Navbar";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import ChatbaseBot from "@/components/ui/ChatbaseBot";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,6 +35,8 @@ export default function RootLayout({
           <CustomCursor />
           <NeuralNetwork />
           <SmoothScroll>{children}</SmoothScroll>
+          <WhatsAppFloat />
+          <ChatbaseBot />
         </ThemeController>
       </body>
     </html>
