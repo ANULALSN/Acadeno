@@ -18,6 +18,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Acadeno | High-Tech Innovation Hub",
   description: "Acadeno - The Neural Gateway to AI, Robotics, and Future Tech.",
+  icons: {
+    icon: "/Acadeno Logo Final-02.png",
+    apple: "/Acadeno Logo Final-02.png",
+  },
 };
 
 export default function RootLayout({
